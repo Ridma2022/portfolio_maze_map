@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboRoarZ | Autonomous Maze Navigation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1>RoboRoarZ</h1>
+            <p>Autonomous Maze-Solving & Mapping Robot in Webots</p>
+            <!-- You can update this link later once you have your repository link -->
+            <a href="#" class="btn" target="_blank">View Code on GitHub</a>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="intro">
+            <h2>Project Overview</h2>
+            <p>
+                RoboRoarZ is a fully autonomous robot simulated in the Webots environment. Built using Python, 
+                the robot is designed to explore an unknown 12x12 grid maze, map its surroundings in real-time using OpenCV, 
+                detect visual checkpoints via camera sensors, and calculate the absolute shortest path to its target using 
+                Breadth-First Search (BFS) algorithms.
+            </p>
+        </section>
+
+        <section class="video-section">
+            <h2>Simulation Demonstration</h2>
+            <p>Watch the robot autonomously map the maze and navigate to its target.</p>
+            <div class="video-container">
+                <video controls>
+                    <source src="assets/simulation_video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+        <section class="technical-details">
+            <h2>Technical Implementation</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🔍 Autonomous Exploration</h3>
+                    <p>Utilizes a robust left-wall following algorithm with fallback backtracking mechanisms. Distance sensors (ps0, ps5, ps7) constantly evaluate walls against a threshold to determine valid movement coordinates.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🗺️ Real-Time OpenCV Mapping</h3>
+                    <p>As the robot moves, it constructs a dynamic 2D map using OpenCV. It visualizes visited tiles, detected walls (red lines), and active orientation, providing a live debug interface of the robot's spatial awareness.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚙️ Kinematics & Drift Correction</h3>
+                    <p>Calculates exact wheel rotation using encoder values and axle length. To combat simulation physics drift, a custom compensation algorithm triggers corrective micro-turns based on differential turn counts.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🧠 BFS Shortest Path Navigation</h3>
+                    <p>Once exploration is complete, the robot doesn't just retrace its steps. It runs a Breadth-First Search (BFS) over its recorded wall data to calculate and execute the true shortest path (blue dashed line) to the final target.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📷 HSV Color Vision</h3>
+                    <p>Processes raw camera buffers into HSV color space using OpenCV to filter and detect green checkpoints. Includes a "head-shake" scanning routine when suspicious color percentages trigger the threshold.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Project Gallery</h2>
+            <p>Visual breakdowns of the environment and mapping algorithms.</p>
+            <div class="image-grid">
+                <figure>
+                    <img src="assets/maze_layout.jpg" alt="Webots Maze Layout">
+                    <figcaption>The simulated Webots maze environment.</figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/opencv_map.jpg" alt="OpenCV Live Mapping">
+                    <figcaption>Real-time 12x12 grid map generated via OpenCV showing walls and visited paths.</figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/robot_closeup.jpg" alt="Robot Close Up">
+                    <figcaption>Close up of the robot showcasing sensor placement.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Designed and Developed by Ridma.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
